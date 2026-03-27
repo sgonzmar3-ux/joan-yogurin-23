@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Joan Yogurín 23</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(to bottom, #d9f99d, #f0fdf4, #a7f3d0);
+      color: #1f2937;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 16px;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.85);
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-weight: 700;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.4rem, 5vw, 4.5rem);
+      line-height: 1.05;
+    }
+
+    .green {
+      color: #15803d;
+    }
+
+    .hero p {
+      max-width: 760px;
+      margin: 18px auto 0;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .card-dark {
+      background: linear-gradient(135deg, #14532d, #065f46);
+      color: white;
+    }
+
+    .card-black {
+      background: #111827;
+      color: white;
+    }
+
+    .section-label {
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: #15803d;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .yogurt-wrap {
+      text-align: center;
+    }
+
+    .yogurt-button {
+      background: transparent;
+      border: 0;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .yogurt {
+      width: 220px;
+      height: 300px;
+      margin: 0 auto;
+      position: relative;
+      animation: floaty 2.2s ease-in-out infinite;
+    }
+
+    @keyframes floaty {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .yogurt-top {
+      position: absolute;
+      top: 26px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 190px;
+      height: 60px;
+      border-radius: 999px;
+      border: 4px solid #86efac;
+      background: linear-gradient(to right, #86efac, #bef264, #6ee7b7);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+    }
+
+    .yogurt-body {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 175px;
+      height: 230px;
+      border-radius: 34px 34px 46px 46px;
+      border: 4px solid #86efac;
+      background: linear-gradient(to bottom, #ffffff, #d9f99d);
+      box-shadow: 0 18px 28px rgba(0, 0, 0, 0.12);
+    }
+
+    .yogurt-title {
+      position: absolute;
+      top: 45px;
+      width: 100%;
+      text-align: center;
+      font-size: 0.8rem;
+      font-weight: 900;
+      letter-spacing: 0.32em;
+      color: #166534;
+    }
+
+    .yogurt-circle {
+      position: absolute;
+      top: 102px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      background: #a7f3d0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      box-shadow: inset 0 3px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    .yogurt-text {
+      position: absolute;
+      bottom: 28px;
+      width: 100%;
+      text-align: center;
+      font-size: 0.95rem;
+      font-weight: 800;
+      line-height: 1.4;
+      color: #374151;
+    }
+
+    .status {
+      margin-top: 22px;
+      text-align: center;
+    }
+
+    .status h2 {
+      margin: 0;
+      font-size: 1.35rem;
+    }
+
+    .status p {
+      margin: 10px 0 0;
+      color: #6b7280;
+      line-height: 1.5;
+    }
+
+    .opened-badge {
+      display: inline-block;
+      background: #d1fae5;
+      color: #047857;
+      font-weight: 800;
+      padding: 10px 16px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+
+    .gifts {
+      margin-top: 24px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .gift {
+      background: rgba(240, 253, 244, 0.95);
+      border: 1px solid #dcfce7;
+      border-radius: 22px;
+      padding: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .gift-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+
+    .gift-platform {
+      color: #6b7280;
+      font-size: 0.95rem;
+    }
+
+    .gift-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
+    }
+
+    code {
+      background: white;
+      padding: 10px 12px;
+      border-radius: 14px;
+      font-weight: 700;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+    }
+
+    .copy-btn {
+      border: 0;
+      background: #16a34a;
+      color: white;
+      padding: 10px 16px;
+      border-radius: 16px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .copy-btn:hover {
+      background: #15803d;
+    }
+
+    .side-stack {
+      display: grid;
+      gap: 24px;
+    }
+
+    .info-label {
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      font-size: 0.78rem;
+      font-weight: 800;
+      margin-bottom: 18px;
+      color: #166534;
+    }
+
+    .card-dark .info-label {
+      color: #d9f99d;
+    }
+
+    .card-black .info-label {
+      color: #86efac;
+    }
+
+    .pill {
+      background: #f8fafc;
+      border-radius: 18px;
+      padding: 14px 16px;
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+
+    .movie-box {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 18px;
+      padding: 16px;
+      margin-top: 12px;
+      line-height: 1.5;
+    }
+
+    .signature {
+      font-size: 1.7rem;
+      font-weight: 900;
+      line-height: 1.3;
+      margin-top: 12px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @media (max-width: 900px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="hero">
+      <div class="badge">🎉 Cumple de Joan · edición yogurín bestia</div>
+      <h1>Feliz cumple, <span class="green">Joan</span></h1>
+      <p>
+        Como oficialmente sigues siendo el más joven del grupo, hemos decidido hacerte un regalo a la altura de tu edad, de tu voz grave y de tu energía de yogurín protagonista de drama motero.
+      </p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="section-label">Misión principal</div>
+
+        <div class="yogurt-wrap">
+          <button class="yogurt-button" id="yogurtButton">
+            <div class="yogurt">
+              <div class="yogurt-top"></div>
+              <div class="yogurt-body"></div>
+              <div class="yogurt-title">YOGURÍN</div>
+              <div class="yogurt-circle">✨</div>
+              <div class="yogurt-text">
+                Joan sabor<br />
+                bruto bestia
+              </div>
+            </div>
+          </button>
+        </div>
+
+        <div class="status" id="closedStatus">
+          <h2 id="message">Toca el yogur verde para reclamar tus regalitos</h2>
+          <p>
+            Necesitas insistir un poco. Ya sabes cómo va esto cuando el más pequeño del grupo exige tributo con voz de locutor de tráiler.
+          </p>
+        </div>
+
+        <div class="status hidden" id="openedStatus">
+          <div class="opened-badge">🎁 Yogur abierto con éxito</div>
+          <h2>Tus regalitos están aquí dentro</h2>
+          <p>
+            Sí, Joan. Hemos escondido juegos dentro de un yogur verde. Porque eres un yogurín, pero con alma de escena intensa de moto.
+          </p>
+
+          <div class="gifts">
+            <div class="gift">
+              <div>
+                <div class="gift-title">🎮 Lethal Company</div>
+                <div class="gift-platform">Steam</div>
+              </div>
+              <div class="gift-actions">
+                <code>Se enviará por Steam 👀</code>
+              </div>
+            </div>
+
+            <div class="gift">
+              <div>
+                <div class="gift-title">🎮 Hollow Knight</div>
+                <div class="gift-platform">Steam</div>
+              </div>
+              <div class="gift-actions">
+                <code id="code2">AQUI-VA-TU-CODIGO-2</code>
+                <button class="copy-btn" onclick="copyCode('AQUI-VA-TU-CODIGO-2', this)">Copiar código</button>
+              </div>
+            </div>
+
+            <div class="gift">
+              <div>
+                <div class="gift-title">🎮 V Rising</div>
+                <div class="gift-platform">Steam</div>
+              </div>
+              <div class="gift-actions">
+                <code id="code3">AQUI-VA-TU-CODIGO-3</code>
+                <button class="copy-btn" onclick="copyCode('AQUI-VA-TU-CODIGO-3', this)">Copiar código</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="side-stack">
+        <div class="card">
+          <div class="info-label">Expediente del yogurín</div>
+          <div class="pill"><strong>Edad detectada:</strong> 23 añitos</div>
+          <div class="pill"><strong>Voz oficial:</strong> grave, potente y totalmente innecesaria para pedir regalos</div>
+          <div class="pill"><strong>Frase legendaria:</strong> “soy un bruto, un bestia”</div>
+          <div class="pill"><strong>Estado:</strong> el más joven del grupo, pero viviendo como si estuviera en una escena final dramática</div>
+        </div>
+
+        <div class="card card-dark">
+          <div class="info-label">Ficha cinematográfica</div>
+          <div class="movie-box">
+            <strong>🔊 Modo voz grave</strong><br />
+            Capaz de pedir un yogur como si narrara una película de acción.
+          </div>
+          <div class="movie-box">
+            <strong>🏍️ Modo bruto bestia</strong><br />
+            Referencia interna activada cada vez que hace falta exagerar su épica.
+          </div>
+        </div>
+
+        <div class="card card-black">
+          <div class="info-label">Firma del comando regalador</div>
+          <div class="signature">Andrea, Judith, Oscar, Fabio, Xavi y Sandra</div>
+          <p>
+            Con muchísimo cariño, bastante cachondeo y el firme compromiso de recordarte siempre que eres el yogurín oficial del grupo.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let clicks = 0;
+    let opened = false;
+
+    const yogurtButton = document.getElementById('yogurtButton');
+    const closedStatus = document.getElementById('closedStatus');
+    const openedStatus = document.getElementById('openedStatus');
+    const message = document.getElementById('message');
+
+    const coinAudio = new Audio('https://www.myinstants.com/media/sounds/super-mario-bros-3-coin-sound-effect.mp3');
+    const levelAudio = new Audio('https://www.myinstants.com/media/sounds/super-mario-bros-level-complete.mp3');
+
+    function getMessage(totalClicks) {
+      if (totalClicks < 2) return 'Toca el yogur verde para reclamar tus regalitos';
+      if (totalClicks < 5) return 'Eso es, yogurín. Sigue dándole, bruto, bestia';
+      return 'Vale, vale... ya casi te damos los juegos, motero dramático';
+    }
+
+    yogurtButton.addEventListener('click', function () {
+      if (opened) return;
+
+      clicks += 1;
+      coinAudio.currentTime = 0;
+      coinAudio.play();
+      message.textContent = getMessage(clicks);
+
+      if (clicks >= 5) {
+        opened = true;
+
+        setTimeout(function () {
+          levelAudio.currentTime = 0;
+          levelAudio.play();
+        }, 250);
+
+        closedStatus.classList.add('hidden');
+        openedStatus.classList.remove('hidden');
+      }
+    });
+
+    function copyCode(code, button) {
+      navigator.clipboard.writeText(code).then(function () {
+        const originalText = button.textContent;
+        button.textContent = 'Copiado';
+        setTimeout(function () {
+          button.textContent = originalText;
+        }, 1500);
+      });
+    }
+  </script>
+</body>
+</html>
